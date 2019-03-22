@@ -36,7 +36,7 @@ const clyde = {
   edible: false
 };
 
-ghosts = [inky, blinky, pinky, clyde];
+const ghosts = [inky, blinky, pinky, clyde];
 
 // Draw the screen functionality
 function drawScreen() {
@@ -59,6 +59,9 @@ function displayStats() {
 function displayMenu() {
   console.log('\n\nSelect Option:\n');  // each \n creates a new line
   console.log('(d) Eat Dot');
+  ghosts.forEach(function(ghost) {
+    console.log(`(${ghost.menu_option}) Eat ${ghost.name}`);
+  });
   console.log('(q) Quit');
 }
 
