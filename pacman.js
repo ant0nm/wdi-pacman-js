@@ -10,7 +10,7 @@ const inky = {
   colour: 'Red',
   character: 'Shadow',
   edible: false
-}
+};
 
 const blinky = {
   menu_option: '2',
@@ -18,7 +18,7 @@ const blinky = {
   colour: 'Cyan',
   character: 'Speedy',
   edible: false
-}
+};
 
 const pinky = {
   menu_option: '3',
@@ -26,7 +26,7 @@ const pinky = {
   colour: 'Pink',
   character: 'Bashful',
   edible: false
-}
+};
 
 const clyde = {
   menu_option: '4',
@@ -34,10 +34,9 @@ const clyde = {
   colour: 'Orange',
   character: 'Pokey',
   edible: false
-}
+};
 
-// replace this comment with your four ghosts setup as objects
-
+ghosts = [inky, blinky, pinky, clyde];
 
 // Draw the screen functionality
 function drawScreen() {
