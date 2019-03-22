@@ -61,6 +61,9 @@ function displayStats() {
 function displayMenu() {
   console.log('\n\nSelect Option:\n');  // each \n creates a new line
   console.log('(d) Eat Dot');
+  if (powerPellets > 0) {
+    console.log('(p) Eat Power-Pellet');
+  }
   ghosts.forEach(function(ghost) {
     console.log(`(${ghost.menu_option}) Eat ${ghost.name}`);
   });
@@ -86,11 +89,22 @@ function eatGhost(ghost) {
     checkLives();
   }
 }
+ function eatPowerPellet() {
+   score += 50;
+   ghosts.forEach(function(ghost) {
+     ghost.edible = true;
+   });
+   powerPellets--;
+ }
 
 function checkLives() {
   if (lives < 0) {
     process.exit();
   }
+}
+
+function somePelletsLeft() {
+  return powerPellets >= 0;
 }
 
 // Process Player's Input
@@ -102,6 +116,13 @@ function processInput(key) {
       break;
     case 'd':
       eatDot();
+      break;
+    case 'p':
+      if (somePelletsLeft()) {
+        eatPowerPellet();
+      } else {
+        console.log('\nNo Power-Pellets left!');
+      }
       break;
     case '1':
       eatGhost(inky);
