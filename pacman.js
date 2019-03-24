@@ -65,7 +65,8 @@ function displayMenu() {
     console.log('(p) Eat Power-Pellet');
   }
   ghosts.forEach(function(ghost) {
-    console.log(`(${ghost.menu_option}) Eat ${ghost.name}`);
+    let edible_status = ghost.edible ? 'edible':'inedible';
+    console.log(`(${ghost.menu_option}) Eat ${ghost.name} (${edible_status})`);
   });
   console.log('(q) Quit');
 }
@@ -87,6 +88,10 @@ function eatGhost(ghost) {
     console.log(`\n${ghost.colour} ${ghost.name} killed Pac-Man!`);
     lives--;
     checkLives();
+  } else {
+    console.log(`\nPac-Man just ate ${ghost.colour} ${ghost.name}!`);
+    score += 200;
+    ghost.edible = false;
   }
 }
  function eatPowerPellet() {
@@ -104,7 +109,7 @@ function checkLives() {
 }
 
 function somePelletsLeft() {
-  return powerPellets >= 0;
+  return powerPellets > 0;
 }
 
 // Process Player's Input
